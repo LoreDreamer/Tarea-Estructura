@@ -20,7 +20,15 @@ Para poder ejecutar el programa, debe poner en el Shell el siguiente comando:
 
 Trate de no tocar nada del código en main.c, ya que este puede hacer que el programa deje de funcionar como es debido.
 
-## TDAs
+## FUNCIONALIDADES
+
+### FUNCIONA CORRECTAMENTE:
+
+- Registración de paciente con su nombre, edad y síntoma, siendo inicial asignado a prioridad baja.
+- Asignación de prioridad para los pacientes, si es que es necesario cambiarlos de prioridad para ser atendidos antes.
+- Mostrar la lista de los pacientes a ser atendidos, dividos en sus diferentes prioridades en orden de registración.
+- Atender al paciente.
+
 En la carpeta `tdas` se encuentran implementados distintos TDAs que puedes utilizar (lista, pila, cola, cola con prioridad y mapas). 
 
 Las implementaciones no son las más eficientes (todas usan como estructura de datos una **lista enlazada**), por lo que puedes reemplazarlas por las que has realizado en los labs.
