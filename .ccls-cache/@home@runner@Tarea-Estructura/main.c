@@ -152,7 +152,7 @@ void asignarPrioridad(typeListaPacientes *listaPacientes) { // Función para asi
   printf("Ingrese nombre del paciente: ");
   scanf(" %49[^\n]s", nombreTemporal);  // Leer el nombre del paciente
   
-  printf("Ingrese antigua prioridad del paciente: ");
+  printf("\nIngrese antigua prioridad del paciente (ALTA, MEDIA, BAJA): ");
   scanf(" %5[^\n]s", antiguaPrioridad); // Leer la antigua prioridad del paciente
 
   List *listaBuscada = NULL; // Puntero a la lista buscada
@@ -185,7 +185,7 @@ void asignarPrioridad(typeListaPacientes *listaPacientes) { // Función para asi
 
     if (strcmp(aux->nombre, nombreTemporal) == 0) { // Comparar el nombre del paciente con el nombre ingresado
 
-      printf("Ingrese nueva prioridad (1/2/3): ");
+      printf("\nIngrese nueva prioridad (1/2/3): ");
       scanf(" %zu", &option); // Leer la nueva prioridad del paciente
 
       switch(option) { // Evaluar la nueva prioridad del paciente
@@ -259,13 +259,13 @@ void mostrarListaPacientes(typeListaPacientes listaPacientes) { // Función para
 
   printf("\nPacientes en espera: \n\n"); 
 
-  printf("ALTA PRIORIDAD (1): \n\n");
+  printf("PRIORIDAD ALTA (1): \n\n");
   mostrarPacientes(listaPacientes.alta); // Mostrar la lista de alta prioridad
 
-  printf("\nMEDIA PRIORIDAD (2): \n\n");
+  printf("\nPRIORIDAD MEDIA (2): \n\n");
   mostrarPacientes(listaPacientes.media); // Mostrar la lista de media prioridad
 
-  printf("\nBAJA PRIORIDAD (3): \n\n");
+  printf("\nPRIORIDAD BAJA (3): \n\n");
   mostrarPacientes(listaPacientes.baja); // Mostrar la lista de baja prioridad
 
 }
