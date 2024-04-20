@@ -144,7 +144,7 @@ void organizarLista(List *listTemp) { // Función para organizar la lista de pac
 
         if ((aux->horaIngreso > aux2->horaIngreso) || (aux->horaIngreso == aux2->horaIngreso && aux->minutoIngreso > aux2->minutoIngreso)) // Comparar las horas y minutos de ingreso de los pacientes
 
-          swapPatients(aux, aux2); // Intercambiar los pacientes si es necesario, texto.
+          swapPatients(aux, aux2); // Intercambiar los pacientes si es necesario.
 
       }
     }
