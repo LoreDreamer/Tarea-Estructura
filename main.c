@@ -272,7 +272,11 @@ void mostrarPacientes(List *listaTemp) { // Función para mostrar los pacientes 
     printf("Nombre: %s\n", temporal->nombre);
     printf("Edad: %s\n", temporal->edad);
     printf("Sintoma: %s\n", temporal->sintoma);
-    printf("Hora Ingreso: %zu horas con %zu minuto(s)\n\n", temporal->horaIngreso, temporal->minutoIngreso);
+
+    if (temporal->minutoIngreso > 10) // Mostrar la hora y minuto de ingreso del paciente
+      printf("Hora Ingreso: %zu:%zu\n\n", temporal->horaIngreso, temporal->minutoIngreso);
+    else // Mostrar la hora y minuto de ingreso del paciente si los minutos son menores a 10
+      printf("Hora Ingreso: %zu:0%zu\n\n", temporal->horaIngreso, temporal->minutoIngreso);
 
     temporal = list_next(listaTemp); // Avanzar al siguiente paciente
 
@@ -309,7 +313,12 @@ bool detectorListaYAtencionPaciente(List *listTemp) { // Función para detectar 
       printf("Nombre: %s\n", aux->nombre);
       printf("Edad: %s\n", aux->edad);
       printf("Sintoma: %s\n", aux->sintoma);
-      printf("Hora Ingreso: %zu horas con %zu minuto(s)\n\n", aux->horaIngreso, aux->minutoIngreso);
+
+      if (aux->minutoIngreso > 10) // Mostrar la hora de ingreso del paciente
+        printf("Hora Ingreso: %zu:%zu\n\n", aux->horaIngreso, aux->minutoIngreso);
+      else // Si el minuto de ingreso es menor a 10
+        printf("Hora Ingreso: %zu:0%zu\n\n", aux->horaIngreso, aux->minutoIngreso); 
+      
       printf("El paciente ha sido atendido.\n"); // Mostrar mensaje de éxito
 
       aux = list_next(listTemp); // Avanzar al siguiente paciente
