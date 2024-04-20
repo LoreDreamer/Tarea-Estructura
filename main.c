@@ -80,10 +80,10 @@ bool detectorNumero(char *cadena) { // Función para detectar si una cadena es u
 void registrarPaciente(List *listaEntrada, time_t *horaActual) { // Función para registrar un paciente
 
   printf("\nREGISTRACIÓN DE PACIENTE\n\n");
-  time(horaActual); // Obtener la hora actual
+  time(horaActual); // Obtiene la hora actual del sistema
 
   typePaciente *pacienteTemp = (typePaciente *) malloc(sizeof(typePaciente)); // Crear un nuevo paciente
-  struct tm *timeA = localtime(horaActual); // Obtener la hora actual
+  struct tm *timeA = localtime(horaActual); // Obtiene la hora actual del sistema para el paciente
   size_t horaTemp = timeA->tm_hour -= 4; // Restar 4 horas para obtener la hora en Chile
 
   if (horaTemp < 0) 
@@ -144,7 +144,7 @@ void organizarLista(List *listTemp) { // Función para organizar la lista de pac
 
         if ((aux->horaIngreso > aux2->horaIngreso) || (aux->horaIngreso == aux2->horaIngreso && aux->minutoIngreso > aux2->minutoIngreso)) // Comparar las horas y minutos de ingreso de los pacientes
 
-          swapPatients(aux, aux2); // Intercambiar los pacientes si es necesario
+          swapPatients(aux, aux2); // Intercambiar los pacientes si es necesario, texto.
 
       }
     }
@@ -442,4 +442,5 @@ int main() {
   list_clean(listaPacientes.baja); // Liberar la memoria de las listas de pacientes
 
   return 0;
+  
 }
