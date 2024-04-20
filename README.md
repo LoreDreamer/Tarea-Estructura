@@ -1,15 +1,24 @@
-En este *repl* puedes encontrar varios ejemplos que te pueden ayudar con las tareas de estructura.
+# SISTEMA DE GESTIÓN HOSPITALARIA
 
-## Código de Ejemplo (main)
-Para ejecutar el main primero debemos compilar (en la carpeta raíz)
-````
-gcc tdas/*.c main.c -Wno-unused-result -o main
-````
+### DESCRIPCIÓN
 
-Y luego ejecutar:
+Este sistema permite administrar la base de datos de un hospital. Hay varias acciones las cual el usuario puede realizar como registrar a un paciente, asignar su prioridad, mostrar a todos los pacientes, etc. Esta herramienta tiene como propósito mejorar la administración de pacientes en los hospitales y clínicas del país, para que el paciente tenga una atención más eficiente.
+
+### COMO USAR
+
+La base del código se encuentra actualmente en GitHub, pero para poder usarlo de manera correcta los invito a usar el link en los detalles o el "About" del GitHub.
+
+Tras entrar al Replit, para usar usted debe hacer uso de la función "Fork and Run" a la derecha de la pantalla.
+
+Usted tendrá acceso al código sin ningún problema.
+
+Para poder ejecutar el programa, debe poner en el Shell el siguiente comando:
+
 ````
 ./main
 ````
+
+Trate de no tocar nada del código en main.c, ya que este puede hacer que el programa deje de funcionar como es debido.
 
 ## TDAs
 En la carpeta `tdas` se encuentran implementados distintos TDAs que puedes utilizar (lista, pila, cola, cola con prioridad y mapas). 
