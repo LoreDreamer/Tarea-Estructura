@@ -7,52 +7,39 @@
 #include <stdbool.h>
 
 typedef struct { // Estructura para almacenar los datos de la persona
-
   char nombre[50];
   char edad[4];
   char sintoma[50];
   char prioridad[6];
   size_t horaIngreso;
   size_t minutoIngreso;
-
 } typePaciente;
 
 typedef struct { // Nodo de la lista
-
   List *alta;
   List *media;
   List *baja;
-
 } typeListaPacientes;
 
-void limpiarPantalla() { // Función para limpiar la pantalla
-
-  system("clear"); 
-
-}
+void limpiarPantalla() { system("clear"); } // Limpia la pantalla
 
 void presioneTeclaParaContinuar() { // Función para pausar el programa
-
   puts("Presione una tecla para continuar...");
   getchar(); 
   getchar(); 
-
 }
 
 void mostrarMenuPrincipal() { // Función para mostrar el menú principal
-
   limpiarPantalla();
   puts("========================================");
   puts("     Sistema de Gestión Hospitalaria");
   puts("========================================\n");
-
   puts("1) Registrar paciente");
   puts("2) Asignar prioridad a paciente");
   puts("3) Mostrar lista de espera");
   puts("4) Atender al siguiente paciente");
   puts("5) Mostrar pacientes por prioridad");
   puts("6) Salir\n");
-
 }
 
 bool detectorPalabra(char *cadena) { // Función para detectar si una cadena es un número
@@ -61,7 +48,6 @@ bool detectorPalabra(char *cadena) { // Función para detectar si una cadena es 
 
     if (isalpha(cadena[i])) // Si se encuentra una letra en la cadena
       return true;
-
   }
   return false; // Si no se encuentra ninguna letra en la cadena
 }
@@ -72,7 +58,6 @@ bool detectorNumero(char *cadena) { // Función para detectar si una cadena es u
 
     if (isdigit(cadena[i])) // Si se encuentra un dígito en la cadena
       return true;
-
   }
   return false; // Si no se encuentra ningún dígito en la cadena
 }
@@ -88,7 +73,7 @@ void registrarPaciente(List *listaEntrada, time_t *horaActual) { // Función par
 
   if (horaTemp < 0) 
     horaTemp += 24; // Ajustar la hora si es negativa
-
+  
   pacienteTemp->horaIngreso = horaTemp; // Asignar la hora de ingreso al paciente
   pacienteTemp->minutoIngreso = timeA->tm_min; // Asignar el minuto de ingreso al paciente
 
@@ -132,19 +117,16 @@ void organizarLista(List *listTemp) { // Función para organizar la lista de pac
   if (aux == NULL) // Si la lista está vacía, no hay nada que organizar
 
     return;
-
   else { // Si la lista no está vacía, ordenarla
 
     typePaciente *aux2 = list_next(listTemp); // Obtener el segundo paciente de la lista
 
     for (aux = list_first(listTemp); aux != NULL; aux = list_next(listTemp)) { // Recorrer la lista
-
       for (aux2 = list_next(listTemp); aux2 != NULL; aux2 = list_next(listTemp)) { // Recorrer la lista desde el segundo paciente
 
         if ((aux->horaIngreso > aux2->horaIngreso) || (aux->horaIngreso == aux2->horaIngreso && aux->minutoIngreso > aux2->minutoIngreso)) // Comparar las horas y minutos de ingreso de los pacientes
 
           swapPatients(aux, aux2); // Intercambiar los pacientes si es necesario.
-
       }
     }
   }
@@ -178,7 +160,6 @@ void asignarPrioridad(typeListaPacientes *listaPacientes) { // Función para asi
   if (strcmp(antiguaPrioridad, "ALTA") == 0) { // Comparar la antigua prioridad con "ALTA"
 
     listaBuscada = listaPacientes->alta; // Asignar la lista "alta" a la variable listaBuscada
-
   } else if (strcmp(antiguaPrioridad, "MEDIA") == 0) { // Comparar la antigua prioridad con "MEDIA"
 
     listaBuscada = listaPacientes->media; // Asignar la lista "media" a la variable listaBuscada
@@ -200,9 +181,7 @@ void asignarPrioridad(typeListaPacientes *listaPacientes) { // Función para asi
 
     printf("\n\nLa lista original del paciente se encuentra vacía.\n");
     return;
-  }
-
-  while (aux != NULL) { // Recorrer la lista buscada
+  } while (aux != NULL) { // Recorrer la lista buscada
 
     if (strcmp(aux->nombre, nombreTemporal) == 0) { // Comparar el nombre del paciente con el nombre ingresado
 
@@ -269,13 +248,10 @@ void mostrarPacientes(List *listaTemp) { // Función para mostrar los pacientes 
 
     printf("No hay pacientes en espera.\n");
     return;
-  }
-
-  while (temporal != NULL) { // Recorrer la lista
+  } while (temporal != NULL) { // Recorrer la lista
 
     mostrarPaciente(*temporal);
     temporal = list_next(listaTemp); // Avanzar al siguiente paciente
-
   }
 }
 
@@ -302,9 +278,7 @@ bool detectorListaYAtencionPaciente(List *listTemp) { // Función para detectar 
 
     return true;
   
-  } else { // Si hay pacientes en espera
-
-    while (aux != NULL) { // Recorrer la lista
+  } while (aux != NULL) { // Recorrer la lista
 
       mostrarPaciente(*aux);      
       printf("El paciente ha sido atendido.\n"); // Mostrar mensaje de éxito
@@ -314,7 +288,6 @@ bool detectorListaYAtencionPaciente(List *listTemp) { // Función para detectar 
       break;
 
     }
-  }
   return false;   
 }
 
