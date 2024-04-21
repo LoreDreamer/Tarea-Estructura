@@ -213,7 +213,6 @@ void asignarPrioridad(typeListaPacientes *listaPacientes) { // Función para asi
 
       list_popCurrent(listaBuscada); // Eliminar el paciente de la lista original
       printf("\nPrioridad reasignada con éxito\n"); // Mostrar mensaje de éxito
-      reorganizarListas(listaPacientes); // Reorganizar las listas
       return; // Salir de la función
     }
 
@@ -257,7 +256,8 @@ void mostrarPacientes(List *listaTemp) { // Función para mostrar los pacientes 
 
 void mostrarListaPacientes(typeListaPacientes listaPacientes) { // Función para mostrar las listas de pacientes
 
-  printf("\nPacientes en espera: \n\n"); 
+  printf("\nPacientes en espera: \n\n");
+  reorganizarListas(&listaPacientes); // Reorganizar las listas
 
   printf("PRIORIDAD ALTA (1): \n\n");
   mostrarPacientes(listaPacientes.alta); // Mostrar la lista de alta prioridad
@@ -286,7 +286,6 @@ bool detectorListaYAtencionPaciente(List *listTemp) { // Función para detectar 
       aux = list_next(listTemp); // Avanzar al siguiente paciente
       list_popFront(listTemp); // Eliminar el paciente de la lista
       break;
-
     }
   return false;   
 }
@@ -321,7 +320,8 @@ void atenderPaciente(typeListaPacientes *listaPacientes) { // Función para aten
 void mostrarPrioridad(typeListaPacientes listaPacientes) { // Función para mostrar las listas de pacientes por prioridad
 
   size_t option; // Variable para almacenar la opción seleccionada por el usuario
-  
+
+  reorganizarListas(&listaPacientes); // Reorganizar las listas
   printf("\nLISTA POR PRIORIDAD\n\n");
   printf("Elija prioridad a mostrar (1/2/3): "); // Pedir al usuario que elija una prioridad
   scanf(" %zu", &option); // Leer la opción seleccionada por el usuario

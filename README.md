@@ -34,6 +34,7 @@ Trate de no tocar nada del código en main.c, ya que este puede hacer que el pro
 - Para buscar a un paciente mientras se asigna la prioridad, uno debe escribir de la misma forma que el nombre fue ingresado.
 - El uso de cáracteres especiales puede hacer que la búsqueda de pacientes se haga más díficil, por lo que se recomienda registrar los nombres sin tildes ni otros cáracteres.
 - Aquellos pacientes con nombres similares pueden causar problemas al tratar de asignar la prioridad, por lo que es necesario usar nombre y apellido para evitar este tipo de casos.
+- Al asignar prioridad, puede ser posible que el sistema lo devuelva a la pantalla original sin razón alguna. Esto es debido a que se introduce una nueva lista inválida para que el paciente sea transferido, lo cual el sistema lo trata como error.
 
 ## EJEMPLO DE USO
 
@@ -137,4 +138,3 @@ Para salir del sistema, haga uso de la última opción y estará fuera de la apl
 Saliendo del sistema de gestión hospitalaria...
 Presione una tecla para continuar...
 ````
-
