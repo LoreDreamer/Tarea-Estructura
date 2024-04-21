@@ -138,3 +138,11 @@ Para salir del sistema, haga uso de la última opción y estará fuera de la apl
 Saliendo del sistema de gestión hospitalaria...
 Presione una tecla para continuar...
 ````
+
+---
+
+En caso de que haya problemas con el código, usted puede contactar al desarrollador de la aplicación mediante GitHub. Solamente haga uso de este código en el shell y contacte al desarrollador con todos los detalles posible:
+
+````
+gcc tdas/*.c main.c -Wno-unused-result -o main
+````
