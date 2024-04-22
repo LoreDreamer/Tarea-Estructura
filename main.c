@@ -62,44 +62,48 @@ bool detectorNumero(char *cadena) { // Función para detectar si una cadena es u
   return false; // Si no se encuentra ningún dígito en la cadena
 }
 
-void registrarPaciente(List *listaEntrada, time_t *horaActual) { // Función para registrar un paciente
-
-  printf("\nREGISTRACIÓN DE PACIENTE\n\n");
-  time(horaActual); // Obtiene la hora actual del sistema
-
-  typePaciente *pacienteTemp = (typePaciente *) malloc(sizeof(typePaciente)); // Crear un nuevo paciente
-  struct tm *timeA = localtime(horaActual); // Obtiene la hora actual del sistema para el paciente
-  size_t horaTemp = timeA->tm_hour -= 4; // Restar 4 horas para obtener la hora en Chile
-
-  if (horaTemp < 0) 
-    horaTemp += 24; // Ajustar la hora si es negativa
+void registrarPaciente(List *listaEntrada, time_t *horaActual) {
   
-  pacienteTemp->horaIngreso = horaTemp; // Asignar la hora de ingreso al paciente
-  pacienteTemp->minutoIngreso = timeA->tm_min; // Asignar el minuto de ingreso al paciente
+    printf("\nREGISTRACIÓN DE PACIENTE\n\n");
+    time(horaActual); 
 
-  printf("Ingrese nombre del paciente: ");
-  scanf(" %49[^\n]", pacienteTemp->nombre); // Leer el nombre del paciente
+    typePaciente *pacienteTemp = (typePaciente *) malloc(sizeof(typePaciente)); 
+    struct tm *timeA = localtime(horaActual); 
 
-  if (detectorNumero(pacienteTemp->nombre)) { // Verificar si el nombre contiene números
-    printf("\nEl nombre no puede contener números.\n");
-    return;
-  }
-
-  printf("\nIngrese edad del paciente: ");
-  scanf(" %3[^\n]", pacienteTemp->edad); // Leer la edad del paciente
-
-  if (detectorPalabra(pacienteTemp->edad)) { // Verificar si la edad contiene letras
-    printf("\nLa edad no puede contener letras.\n");
-    return;
-  }
-
-  printf("\nIngrese sintoma del paciente: ");
-  scanf(" %49[^\n]", pacienteTemp->sintoma); // Leer el sintoma del paciente
-
-  strcpy(pacienteTemp->prioridad, "BAJA"); // Asignar la prioridad inicial como "BAJA"
-  list_pushBack(listaEntrada, pacienteTemp); // Agregar el paciente a la lista de entrada
-  printf("\nPaciente registrado con éxito.\n"); // Mostrar mensaje de éxito
+    int horaTemp = timeA->tm_hour - 4;
   
+    if (horaTemp < 0)
+        horaTemp += 24;
+  
+    pacienteTemp->horaIngreso = horaTemp; 
+
+    if (timeA->tm_min < 0 || timeA->tm_min >= 60)
+        pacienteTemp->minutoIngreso = 0;  // Establecer a 0 si es inválido
+    else
+        pacienteTemp->minutoIngreso = timeA->tm_min; 
+
+    printf("Ingrese nombre del paciente: ");
+    scanf(" %49[^\n]", pacienteTemp->nombre); 
+
+    if (detectorNumero(pacienteTemp->nombre)) { 
+        printf("\nEl nombre no puede contener números.\n");
+        return;
+    }
+
+    printf("\nIngrese edad del paciente: ");
+    scanf(" %3[^\n]", pacienteTemp->edad); 
+
+    if (detectorPalabra(pacienteTemp->edad)) { 
+        printf("\nLa edad no puede contener letras.\n");
+        return;
+    }
+
+    printf("\nIngrese sintoma del paciente: ");
+    scanf(" %49[^\n]", pacienteTemp->sintoma); 
+
+    strcpy(pacienteTemp->prioridad, "BAJA"); 
+    list_pushBack(listaEntrada, pacienteTemp); 
+    printf("\nPaciente registrado con éxito.\n"); 
 }
 
 void swapPatients(typePaciente *a, typePaciente *b) { // Función para intercambiar dos pacientes
